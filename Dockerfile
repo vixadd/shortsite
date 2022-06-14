@@ -17,17 +17,23 @@ ARG GID=1001
 ARG NODE_VER=16.14.1
 
 ARG VERSION=0.0.0
+ARG USERNAME=ubuntu
 
-RUN groupadd -r -g $GID ubuntu && \
-    useradd -m -r -u $UID -g $GID ubuntu && \
-    echo "%sudo ALL=(ALL) ALL" > /etc/sudoers && \
-    usermod -a -G sudo ubuntu && \
-    echo 'ubuntu:password' | chpasswd
+RUN apt -y update --fix-missing
+RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata
+
+RUN apt install -y python3-pip vim emacs sudo
+
+RUN groupadd -r -g $GID vixadd && \
+    useradd -m -r -u $UID -g $GID vixadd && \
+    echo "vixadd ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vixadd && \
+    usermod -a -G sudo vixadd && \
+    echo 'vixadd:password' | chpasswd
 
 RUN apt-get update -y && apt-get install -y build-essential
 
 ENV NODE_VERSION=${NODE_VER}
-RUN apt-get install -y curl wget python3 python3-pip python3-psycopg2 python3-pystache python3-yaml
+RUN apt-get install -y curl wget python3 python3-pip python3-pystache python3-yaml
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ENV NVM_DIR=/root/.nvm
 RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
@@ -37,7 +43,9 @@ ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 RUN node --version
 RUN npm --version
 
-RUN mkdir /opt/checrs && chown ubuntu:ubuntu -R /opt/
+#RUN apt-get install -y node npm nvm
+
+RUN mkdir /opt/shortsite && chown vixadd:vixadd -R /opt/
 RUN pip install --upgrade pip
 
 ARG GPU=True
@@ -51,9 +59,9 @@ RUN apt-get install -qy wget
 RUN pip install --upgrade pip
 
 RUN mkdir -p /opt/shortsite
-RUN chown ubuntu:ubuntu -R /opt/shortsite/
+RUN chown vixadd:vixadd -R /opt/shortsite/
 
-USER ubuntu
+USER vixadd
 
 WORKDIR /opt/shortsite
 
