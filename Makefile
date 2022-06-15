@@ -28,7 +28,7 @@ docker-start-dev-cpu: docker-build-dev-cpu
                 --memory=$(MAX_MEM) \
                 --memory-swap=$(MAX_MEM_SWAP) \
                 --mount type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix \
-                --mount type=bind,source=$(PWD),target=/opt/short-site \
+                --mount type=bind,source=$(PWD),target=/opt/${IMG_NAME} \
                 -e DISPLAY=$(DISPLAY) \
 		-p $(WEB_PORT):$(WEB_PORT) \
                 --hostname $(CONTAINER_NAME) \
