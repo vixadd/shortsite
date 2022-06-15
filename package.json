@@ -1,0 +1,11 @@
+{
+    "name": "shortsite",
+    "version": "0.0.0",
+    "description": "Personal website for David Kroell nicknamed shortsite.",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "fontawesome": "^4.7.0"
+    }
+}
