@@ -18,10 +18,19 @@ const server = http.createServer((req, res) => {
 
 const app = express();
 app.use(express.json());
-app.use(express.static("express"));// default URL for website
+app.use(express.static(__dirname + "/"));// default URL for website
+
 app.use('/', function(req,res){
     res.sendFile(path.join(__dirname+'/dkroell/index.html'));
     //__dirname : It will resolve to your project folder.
+});
+
+app.use('/font-awesome.css', function(req,res) {
+    res.sendFile(path.join(__dirname+'/node_modules/font-awesome/css/font-awesome.min.css'));
+});
+
+app.use('/index.css', function(req,res) {
+    res.sendFile(path.join(__dirname+'/dkroell/index.css'));
 });
 
 const server = http.createServer(app)
