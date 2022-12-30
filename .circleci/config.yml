@@ -1,0 +1,12 @@
+version: 2.1
+
+jobs:
+ build:
+   machine:
+    image: ubuntu-2204:2022.04.2
+   steps:
+     - checkout
+     # start proprietary DB using private Docker image
+     # with credentials stored in the UI
+     - run: |
+         make docker-build-dev-cpu
