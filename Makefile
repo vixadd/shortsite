@@ -4,7 +4,7 @@
 DOCKERFILE_BUILD ?= ./docker/Dockerfile
 DOCKER ?= docker
 IMG_NAME ?= shortsite
-VERSION ?= $(shell git tag) 
+VERSION ?= latest
 NO_CACHE ?= --no-cache
 MAX_MEM_SWAP ?= 4g
 MAX_MEM ?= 2g
