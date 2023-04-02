@@ -2,8 +2,10 @@
 
 # Docker variables
 DOCKERFILE_BUILD ?= ./docker/Dockerfile
+DOCKERFILE_PROD ?= ./docker/Dockerfile.production
 DOCKER ?= docker
 IMG_NAME ?= shortsite
+PROD_NAME ?= dkroell_site
 VERSION ?= latest
 NO_CACHE ?= --no-cache
 MAX_MEM_SWAP ?= 4g
@@ -14,10 +16,16 @@ WEB_PORT ?= 43881
 
 # Dev CPU
 docker-build-dev-cpu:
-	@DOCKER_BUILDKIT=TRUE $(DOCKER) build . \
+	$(DOCKER) build . \
 		--build-arg UID=$(shell id -u) \
 		--build-arg GID=$(shell id -g) \
 		-f $(DOCKERFILE_BUILD) -t $(IMG_NAME):latest -t $(IMG_NAME):$(VERSION)
+
+docker-build-prod-cpu:
+	$(DOCKER) build . \
+		--build-arg UID=$(shell id -u) \
+		--build-arg GID=$(shell id -g) \
+		-f $(DOCKERFILE_PROD) -t $(PROD_NAME):latest
 
 docker-start-dev-cpu: docker-build-dev-cpu
 	@$(DOCKER) run --privileged -di \
