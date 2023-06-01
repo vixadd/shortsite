@@ -19,4 +19,4 @@ COPY --from=builder /app /app/
 
 RUN npm install --production
 
-CMD ["npm", "start", "--port=8481"]
+CMD ["npm", "start", "--port=80"]
