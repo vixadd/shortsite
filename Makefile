@@ -12,7 +12,7 @@ MAX_MEM_SWAP ?= 4g
 MAX_MEM ?= 2g
 MAX_CPU_COUNT ?= 2
 CONTAINER_NAME ?= shortsite
-WEB_PORT ?= 43881
+WEB_PORT ?= 8481
 
 # Dev CPU
 docker-build-dev-cpu:

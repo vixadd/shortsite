@@ -70,5 +70,3 @@ RUN npm install
 
 RUN echo "export PATH=/home/ubuntu/.local/bin:$PATH" >> ~/.bashrc
 RUN echo "export PATH=/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}" >> ~/.bashrc
-
-

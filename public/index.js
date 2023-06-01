@@ -1,6 +1,6 @@
 
 const image = Image();
-image.src = 'img/side_profile.jpg';
+image.src = 'public/img/side_profile.jpg';
 
 image.addEventListener('load', function(){
     const canvas = document.getElementById('canvas1');
