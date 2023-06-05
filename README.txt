@@ -5,9 +5,10 @@ This is a personal website for David Kroell, but can be used by anyone looking t
 
 Development
 -----------
-The program here involves a docker container. In-which, one can conduct all of the development needed to develop the web application.
+The program here involves a docker container. In-which, one can conduct all of the development needed to change website specifics.
 
 Run the following:
+$> make docker-build-dev-cpu
 $> make docker-start-dev-cpu
 
 This will build the container for the user and will spawn a docker container.
