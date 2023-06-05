@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 const hostname = '0.0.0.0';
-const port = 8481; // Use the PORT environment variable, or 43881 if PORT is not set
+const port = process.env.PORT || 8080; // Use the PORT environment variable, or 43881 if PORT is not set
 const app = express();
 
 app.use(express.json());
