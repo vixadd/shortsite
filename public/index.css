@@ -13,8 +13,18 @@ body, .flex-center {
 body {
   height: 100vh;
   background-color: #ffffff;
-  background-image: linear-gradient(to right, #3EB489, #98ff98, #FFFFFF); 0%, #d7e1ec 74%);
+  background-image: linear-gradient(to right, #3EB489, #98ff98, #FFFFFF); 0%, #d7e1ec 74%
 }
+
+canvas {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 500px; 
+  height: 500px;
+  transform: translate(-50%, -50%);
+}
+
 
 .social-links {
   display: flex;
@@ -61,4 +71,3 @@ body {
 #github {
    fill: #333;
 }
-

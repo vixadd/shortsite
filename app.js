@@ -3,8 +3,8 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
-const hostname = 'localhost';
-const port = 43881; // Use the PORT environment variable, or 43881 if PORT is not set
+const hostname = '0.0.0.0';
+const port = 8481; // Use the PORT environment variable, or 43881 if PORT is not set
 const app = express();
 
 app.use(express.json());
