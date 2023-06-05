@@ -5,12 +5,12 @@ image.src = '/img/side_profile.png';
 image.addEventListener('load', function(){
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
-    canvas.width = 1000;
+    canvas.width = 2001;
     canvas.height = canvas.width;
 
     let particlesArray = [];
-    const numberOfParticles = 12000;
-    const detail = 1;
+    const numberOfParticles = 6000;
+    const detail = 2;
 
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
     const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -66,9 +66,6 @@ image.addEventListener('load', function(){
     init();
 
     function animate () {
-        // ctx.globalAlpha = 0.05;
-        // ctx.fillStyle = 'rgb(0, 0,0)';
-        // ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.globalAlpha = 0.2;
         for (let i = 0; i < particlesArray.length; i++) {
             particlesArray[i].update();
